@@ -41,7 +41,7 @@ def get_embeddings():
 # LLM SETUP
 # ─────────────────────────────────────────────
 def get_llm():
-    # FIXED: Yahan pehle 'elif' tha, jise 'if' kar diya hai
+    # LLM provider selection based on environment variable
     if LLM_PROVIDER == "openai":
         from langchain_openai import ChatOpenAI
         return ChatOpenAI(
@@ -89,7 +89,7 @@ def get_llm():
 # VECTOR STORE
 # ─────────────────────────────────────────────
 def load_vectorstore():
-    # FIXED: Chroma ka correct import yahan add kiya hai
+    # Import langchain-chroma for ChromaDB integration
     from langchain_chroma import Chroma
     embeddings = get_embeddings()
     return Chroma(
