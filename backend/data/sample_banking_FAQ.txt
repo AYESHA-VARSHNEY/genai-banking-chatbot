@@ -1,0 +1,153 @@
+BANKING SUPPORT KNOWLEDGE BASE — FREQUENTLY ASKED QUESTIONS
+
+=== PERSONAL LOANS ===
+
+Q: What is a personal loan?
+A: A personal loan is an unsecured loan offered by banks and financial institutions to individuals for personal use. It can be used for medical emergencies, travel, home renovation, education, or any other personal expense. No collateral is required.
+
+Q: What is the interest rate for personal loans?
+A: Personal loan interest rates typically range from 10.5% to 24% per annum, depending on your credit score, income, and the lender's policies. Customers with a CIBIL score above 750 generally get the best rates starting at 10.5% p.a.
+
+Q: What is the maximum loan amount for a personal loan?
+A: Personal loans are generally available from ₹10,000 to ₹40,00,000 (40 lakhs), depending on your income, repayment capacity, and credit history.
+
+Q: What documents are required for a personal loan?
+A: Required documents include:
+- Identity proof (Aadhaar, PAN card, Passport)
+- Address proof (Utility bill, Aadhaar)
+- Income proof (last 3 months salary slips, bank statements)
+- Form 16 or ITR for the last 2 years
+- Employment proof (offer letter or employee ID)
+
+Q: How long does personal loan approval take?
+A: Digital personal loan approvals can happen within 24–48 hours if all documents are in order. Some lenders offer instant in-principle approval online.
+
+Q: What is the repayment tenure for personal loans?
+A: Repayment tenure typically ranges from 12 months to 60 months (1–5 years). Some lenders offer up to 84 months.
+
+Q: Can I prepay my personal loan?
+A: Yes, most banks allow prepayment. However, a prepayment penalty of 2–5% of the outstanding amount may apply. Some lenders allow prepayment after 12 EMIs without any charge.
+
+=== HOME LOANS ===
+
+Q: What is a home loan?
+A: A home loan (also called a housing loan or mortgage) is a secured loan taken to purchase, construct, or renovate a house or property. The property itself serves as collateral.
+
+Q: What is the current home loan interest rate?
+A: Home loan interest rates currently range from 8.5% to 12% p.a. depending on the lender, your credit profile, and whether you choose a fixed or floating rate. RBI repo rate changes directly affect floating rate home loans.
+
+Q: What is the maximum LTV ratio for home loans?
+A: Loan-to-Value (LTV) ratio is typically:
+- Up to 90% for loans up to ₹30 lakhs
+- Up to 80% for loans between ₹30–75 lakhs
+- Up to 75% for loans above ₹75 lakhs
+
+Q: What is the maximum tenure for a home loan?
+A: Home loans can have a tenure of up to 30 years. Longer tenure means lower EMI but higher total interest paid.
+
+Q: What is PMAY (Pradhan Mantri Awas Yojana)?
+A: PMAY is a government scheme that provides interest subsidies on home loans to economically weaker sections (EWS), lower income groups (LIG), and middle income groups (MIG). Subsidies range from 3% to 6.5% on the loan amount.
+
+=== CREDIT CARDS ===
+
+Q: What is a credit card?
+A: A credit card is a payment card that allows you to borrow money up to a pre-approved credit limit to make purchases. You must repay the borrowed amount, either in full each month or in minimum installments.
+
+Q: What is the minimum payment on a credit card?
+A: The minimum payment is typically 5% of the outstanding balance or ₹500, whichever is higher. Paying only the minimum leads to high interest charges on the remaining balance.
+
+Q: What is the interest rate on credit card outstanding balance?
+A: Credit card interest rates range from 36% to 48% per annum (3%–4% per month) on revolving credit. This is charged if you don't pay the full bill by the due date.
+
+Q: What is a credit card annual fee?
+A: Annual fees vary by card type. Entry-level cards may have no fee or ₹500/year. Premium cards charge ₹2,000–₹10,000/year. Many cards waive the annual fee if you spend a certain amount annually.
+
+Q: How is a credit score (CIBIL score) calculated?
+A: CIBIL score is calculated based on:
+- Payment history (35%): On-time payments improve your score
+- Credit utilization (30%): Keep it below 30% of your limit
+- Credit age (15%): Older accounts help
+- Credit mix (10%): A mix of secured and unsecured loans is better
+- New inquiries (10%): Multiple loan applications hurt your score
+
+Q: What credit card benefits are available?
+A: Common benefits include cashback (1–5%), reward points, air miles, airport lounge access, fuel surcharge waiver, EMI conversion, travel insurance, and purchase protection.
+
+Q: How do I report a lost or stolen credit card?
+A: Immediately call the 24x7 customer care number on the back of your card or on the bank's website. You can also block your card through the bank's mobile app. The bank will issue a replacement card within 5–7 working days.
+
+=== SAVINGS ACCOUNTS ===
+
+Q: What is the minimum balance required for a savings account?
+A: Minimum Average Balance (MAB) requirements vary:
+- Public sector banks: ₹500–₹2,000
+- Private sector banks: ₹5,000–₹25,000
+- Zero-balance accounts (BSBD) are also available under RBI guidelines
+
+Q: What is the interest rate on savings accounts?
+A: Savings account interest rates are typically 2.5%–7% p.a. RBI deregulated savings account rates in 2011, so rates vary by bank.
+
+Q: What is a BSBD account?
+A: Basic Savings Bank Deposit (BSBD) account is a zero-minimum-balance account offered by all scheduled commercial banks under RBI mandate. It includes 4 free withdrawals per month.
+
+=== FIXED DEPOSITS ===
+
+Q: What is a Fixed Deposit (FD)?
+A: A Fixed Deposit is a savings instrument where you deposit a lump sum amount for a fixed tenure at a predetermined interest rate. The rate is higher than a savings account.
+
+Q: What are current FD interest rates?
+A: FD interest rates vary by bank and tenure:
+- Short-term (7 days–3 months): 3%–5.5%
+- Medium-term (6–12 months): 6%–7.5%
+- Long-term (1–5 years): 6.5%–8%
+- Senior citizens typically get an additional 0.25%–0.5%
+
+Q: Is FD amount insured?
+A: Yes. Under DICGC (Deposit Insurance and Credit Guarantee Corporation), deposits up to ₹5,00,000 per depositor per bank are insured.
+
+=== NETBANKING & DIGITAL SERVICES ===
+
+Q: How do I reset my netbanking password?
+A: You can reset your password through:
+1. The "Forgot Password" option on the netbanking login page
+2. Using your registered mobile number for OTP verification
+3. Visiting the branch with your ID proof
+
+Q: What is UPI and how does it work?
+A: UPI (Unified Payments Interface) is a real-time payment system developed by NPCI. It allows you to transfer money instantly between bank accounts using a UPI ID (e.g., yourname@bankname). No bank account or IFSC code is needed at the time of transfer.
+
+Q: What are the UPI transaction limits?
+A: Standard UPI transaction limit is ₹1,00,000 per transaction. For certain categories like capital markets, IPO, and insurance, the limit is ₹2,00,000 per transaction.
+
+=== LOANS — GENERAL POLICIES ===
+
+Q: What is EMI?
+A: EMI (Equated Monthly Installment) is the fixed monthly payment you make to repay a loan. It includes both principal and interest components. EMI = [P × R × (1+R)^N] / [(1+R)^N – 1] where P = Principal, R = monthly interest rate, N = loan tenure in months.
+
+Q: What happens if I miss an EMI payment?
+A: Missing an EMI results in:
+- Late payment penalty (usually 1–2% of overdue amount)
+- Negative impact on your CIBIL credit score
+- Potential legal action if multiple EMIs are missed
+- Loan account classified as NPA (Non-Performing Asset) after 90 days of non-payment
+
+Q: What is a loan moratorium?
+A: A moratorium is a temporary suspension of loan repayment allowed by the lender. During the moratorium, no EMI is due, but interest continues to accrue.
+
+Q: What is the difference between secured and unsecured loans?
+A: 
+- Secured loans require collateral (e.g., home loan, car loan, gold loan). They have lower interest rates.
+- Unsecured loans do not require collateral (e.g., personal loan, credit card). They have higher interest rates due to higher risk for the lender.
+
+=== CUSTOMER SUPPORT ===
+
+Q: How do I file a complaint?
+A: You can file a complaint through:
+1. The bank's official website or mobile app
+2. Calling the 24x7 customer care number
+3. Emailing the grievance redressal team
+4. Visiting the nearest branch
+5. RBI's Banking Ombudsman if unresolved within 30 days
+
+Q: What is the RBI Banking Ombudsman?
+A: The Banking Ombudsman is a senior official appointed by RBI to address complaints against banks relating to deficiency in service. Complaints can be filed online at cms.rbi.org.in free of charge.
