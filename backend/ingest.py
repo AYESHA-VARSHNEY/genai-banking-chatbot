@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Must match what you set in rag_pipeline.py
-EMBEDDING_PROVIDER = os.getenv("EMBEDDING_PROVIDER", "huggingface")
+EMBEDDING_PROVIDER = os.getenv("EMBEDDING_PROVIDER", "gemini")
 CHROMA_DIR = "./chroma_db"
 COLLECTION_NAME = "banking_docs"
 

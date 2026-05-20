@@ -7,7 +7,7 @@ load_dotenv()
 # CONFIGURATION — Sirf yahan change karo
 # ─────────────────────────────────────────────
 LLM_PROVIDER = os.getenv("LLM_PROVIDER", "groq")  # default: groq (free)
-EMBEDDING_PROVIDER = os.getenv("EMBEDDING_PROVIDER", "huggingface")  # default: free!
+EMBEDDING_PROVIDER = os.getenv("EMBEDDING_PROVIDER", "gemini")  # default: free!
 
 CHROMA_DIR = "./chroma_db"
 COLLECTION_NAME = "banking_docs"
