@@ -19,7 +19,7 @@ def get_embeddings():
     elif EMBEDDING_PROVIDER == "gemini":
         from langchain_google_genai import GoogleGenerativeAIEmbeddings
         return GoogleGenerativeAIEmbeddings(
-            model="models/text-embedding-004"
+            model="models/text-embedding-004",
             google_api_key=os.getenv("GEMINI_API_KEY")
         )
     else:  # huggingface — FREE!
