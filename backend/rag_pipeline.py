@@ -3,18 +3,12 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# ─────────────────────────────────────────────
-# CONFIGURATION — Sirf yahan change karo
-# ─────────────────────────────────────────────
-LLM_PROVIDER = os.getenv("LLM_PROVIDER", "groq")  # default: groq (free)
-EMBEDDING_PROVIDER = os.getenv("EMBEDDING_PROVIDER", "gemini")  # default: free!
-
+LLM_PROVIDER = os.getenv("LLM_PROVIDER", "groq")
+EMBEDDING_PROVIDER = os.getenv("EMBEDDING_PROVIDER", "gemini")
 CHROMA_DIR = "./chroma_db"
 COLLECTION_NAME = "banking_docs"
 
-# ─────────────────────────────────────────────
-# EMBEDDING SETUP
-# ─────────────────────────────────────────────
+
 def get_embeddings():
     if EMBEDDING_PROVIDER == "openai":
         from langchain_openai import OpenAIEmbeddings
@@ -22,26 +16,20 @@ def get_embeddings():
             model="text-embedding-3-small",
             api_key=os.getenv("OPENAI_API_KEY")
         )
-
     elif EMBEDDING_PROVIDER == "gemini":
         from langchain_google_genai import GoogleGenerativeAIEmbeddings
         return GoogleGenerativeAIEmbeddings(
             model="models/text-embedding-004",
             google_api_key=os.getenv("GEMINI_API_KEY")
         )
-
-    else:  # huggingface — FREE, no API key needed!
+    else:
         from langchain_community.embeddings import HuggingFaceEmbeddings
         return HuggingFaceEmbeddings(
             model_name="sentence-transformers/all-MiniLM-L6-v2"
         )
 
 
-# ─────────────────────────────────────────────
-# LLM SETUP
-# ─────────────────────────────────────────────
 def get_llm():
-    # LLM provider selection based on environment variable
     if LLM_PROVIDER == "openai":
         from langchain_openai import ChatOpenAI
         return ChatOpenAI(
@@ -49,15 +37,13 @@ def get_llm():
             temperature=0.3,
             api_key=os.getenv("OPENAI_API_KEY")
         )
-
     elif LLM_PROVIDER == "gemini":
         from langchain_google_genai import ChatGoogleGenerativeAI
         return ChatGoogleGenerativeAI(
-            model="gemini-1.5-flash",   
+            model="gemini-1.5-flash",
             temperature=0.3,
             google_api_key=os.getenv("GEMINI_API_KEY")
         )
-
     elif LLM_PROVIDER == "groq":
         from langchain_groq import ChatGroq
         return ChatGroq(
@@ -65,31 +51,24 @@ def get_llm():
             temperature=0.3,
             api_key=os.getenv("GROQ_API_KEY")
         )
-
     elif LLM_PROVIDER == "anthropic":
         from langchain_anthropic import ChatAnthropic
         return ChatAnthropic(
-            model="claude-3-haiku-20240307",  
+            model="claude-3-haiku-20240307",
             temperature=0.3,
             api_key=os.getenv("ANTHROPIC_API_KEY")
         )
-
     elif LLM_PROVIDER == "ollama":
         from langchain_community.llms import Ollama
         return Ollama(
-            model=os.getenv("OLLAMA_MODEL", "llama3"),  
+            model=os.getenv("OLLAMA_MODEL", "llama3"),
             temperature=0.3
         )
-
     else:
         raise ValueError(f"Unknown LLM_PROVIDER: {LLM_PROVIDER}")
 
 
-# ─────────────────────────────────────────────
-# VECTOR STORE
-# ─────────────────────────────────────────────
 def load_vectorstore():
-    # Import langchain-chroma for ChromaDB integration
     from langchain_chroma import Chroma
     embeddings = get_embeddings()
     return Chroma(
@@ -99,9 +78,6 @@ def load_vectorstore():
     )
 
 
-# ─────────────────────────────────────────────
-# SYSTEM PROMPT
-# ─────────────────────────────────────────────
 SYSTEM_PROMPT = """You are a helpful and professional banking support assistant for a fintech company.
 Your role is to assist customers with queries about:
 - Personal and home loans
@@ -111,7 +87,7 @@ Your role is to assist customers with queries about:
 - Banking FAQs and general financial guidance
 
 Use the provided context to answer questions accurately.
-If the answer is not in the context, say: "I don't have specific information about that, 
+If the answer is not in the context, say: "I don't have specific information about that,
 but I recommend contacting our support team at 1800-XXX-XXXX."
 Be concise, professional, and friendly. Always respond in the same language the user writes in.
 
@@ -126,10 +102,7 @@ Customer Question: {question}
 Assistant Answer:"""
 
 
-# ─────────────────────────────────────────────
-# MAIN RAG FUNCTION
-# ─────────────────────────────────────────────
-def get_rag_response(user_message: str, history: list) -> tuple[str, list]:
+def get_rag_response(user_message, history):
     vectorstore = load_vectorstore()
     retriever = vectorstore.as_retriever(
         search_type="similarity",
@@ -146,7 +119,7 @@ def get_rag_response(user_message: str, history: list) -> tuple[str, list]:
         chat_history_str += f"{role}: {msg['content']}\n"
 
     prompt = SYSTEM_PROMPT.format(
-        context=context if context.strip() else "No specific documents found in knowledge base.",
+        context=context if context.strip() else "No specific documents found.",
         chat_history=chat_history_str if chat_history_str else "No previous conversation.",
         question=user_message
     )

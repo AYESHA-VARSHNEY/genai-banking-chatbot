@@ -3,7 +3,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Must match what you set in rag_pipeline.py
 EMBEDDING_PROVIDER = os.getenv("EMBEDDING_PROVIDER", "gemini")
 CHROMA_DIR = "./chroma_db"
 COLLECTION_NAME = "banking_docs"
@@ -22,15 +21,14 @@ def get_embeddings():
             model="models/text-embedding-004",
             google_api_key=os.getenv("GEMINI_API_KEY")
         )
-    else:  # huggingface — FREE!
+    else:
         from langchain_community.embeddings import HuggingFaceEmbeddings
         return HuggingFaceEmbeddings(
             model_name="sentence-transformers/all-MiniLM-L6-v2"
         )
 
 
-def ingest_document(file_path: str) -> int:
-    """Load, chunk, embed and store a document. Returns number of chunks."""
+def ingest_document(file_path):
     from langchain_chroma import Chroma
     from langchain.text_splitter import RecursiveCharacterTextSplitter
 
@@ -43,7 +41,7 @@ def ingest_document(file_path: str) -> int:
         from langchain_community.document_loaders import TextLoader
         loader = TextLoader(file_path, encoding="utf-8")
     else:
-        raise ValueError(f"Unsupported file type: {ext}. Only PDF and TXT supported.")
+        raise ValueError(f"Unsupported file type: {ext}")
 
     documents = loader.load()
 
@@ -69,8 +67,7 @@ def ingest_document(file_path: str) -> int:
     return len(chunks)
 
 
-def ingest_all_from_folder(folder: str = "./data"):
-    """Ingest all PDFs and TXTs from a folder."""
+def ingest_all_from_folder(folder="./data"):
     total = 0
     for filename in os.listdir(folder):
         if filename.endswith((".pdf", ".txt")):
