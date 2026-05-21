@@ -8,7 +8,7 @@ CHROMA_DIR = "./chroma_db"
 COLLECTION_NAME = "banking_docs"
 
 
-ddef get_embeddings():
+def get_embeddings():
     if EMBEDDING_PROVIDER == "openai":
         from langchain_openai import OpenAIEmbeddings
         return OpenAIEmbeddings(
@@ -17,18 +17,16 @@ ddef get_embeddings():
         )
     elif EMBEDDING_PROVIDER == "gemini":
         from langchain_google_genai import GoogleGenerativeAIEmbeddings
+        # Fixed: Sirf model version string use karo bina 'models/' prefix ke
         return GoogleGenerativeAIEmbeddings(
             model="text-embedding-004",
             google_api_key=os.getenv("GEMINI_API_KEY")
         )
     else:
-        # Fixed: Loaded securely from env variable to pass GitHub Push Protection
-        from langchain_community.embeddings import HuggingFaceInferenceAPIEmbeddings
-        return HuggingFaceInferenceAPIEmbeddings(
-            api_key=os.getenv("HF_TOKEN", "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"),
+        from langchain_community.embeddings import HuggingFaceEmbeddings
+        return HuggingFaceEmbeddings(
             model_name="sentence-transformers/all-MiniLM-L6-v2"
         )
-        
 
 
 def ingest_document(file_path):

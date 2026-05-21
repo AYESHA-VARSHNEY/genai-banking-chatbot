@@ -23,9 +23,8 @@ def get_embeddings():
             google_api_key=os.getenv("GEMINI_API_KEY")
         )
     else:
-        from langchain_community.embeddings import HuggingFaceInferenceAPIEmbeddings
-        return HuggingFaceInferenceAPIEmbeddings(
-            api_key=os.getenv("HF_TOKEN", "hf_MclgVbyXvBlVbOInXBlVbOInXb"),
+        from langchain_community.embeddings import HuggingFaceEmbeddings
+        return HuggingFaceEmbeddings(
             model_name="sentence-transformers/all-MiniLM-L6-v2"
         )
 
