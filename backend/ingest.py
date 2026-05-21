@@ -22,9 +22,11 @@ def get_embeddings():
             google_api_key=os.getenv("GEMINI_API_KEY")
         )
     else:
-        from langchain_community.embeddings import HuggingFaceEmbeddings
+        # Optimized HuggingFace configuration to prevent Render Out-of-Memory
+        from langchain_huggingface import HuggingFaceEmbeddings
         return HuggingFaceEmbeddings(
-            model_name="sentence-transformers/all-MiniLM-L6-v2"
+            model_name="sentence-transformers/all-MiniLM-L6-v2",
+            model_kwargs={'device': 'cpu'}  # CPU mode forces low memory consumption
         )
 
 
@@ -77,4 +79,7 @@ def ingest_all_from_folder(folder="./data"):
 
 
 if __name__ == "__main__":
-    ingest_all_from_folder("./data")
+    # Path ko dynamically handle karne ke liye backend/data set karo
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    data_folder = os.path.join(base_dir, "data")
+    ingest_all_from_folder(data_folder)

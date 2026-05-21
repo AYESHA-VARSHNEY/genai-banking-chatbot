@@ -17,6 +17,7 @@ chromadb>=1.0.0
 
 # FREE - HuggingFace embeddings (no API key needed)
 sentence-transformers==2.7.0
+langchain-huggingface
 
 # OpenAI
 langchain-openai==0.3.16
