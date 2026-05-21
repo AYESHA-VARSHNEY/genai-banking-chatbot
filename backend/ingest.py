@@ -15,19 +15,14 @@ def get_embeddings():
             model="text-embedding-3-small",
             api_key=os.getenv("OPENAI_API_KEY")
         )
-    elif EMBEDDING_PROVIDER == "gemini":
-        from langchain_google_genai import GoogleGenerativeAIEmbeddings
-        return GoogleGenerativeAIEmbeddings(
-            model="text-embedding-004",
-            google_api_key=os.getenv("GEMINI_API_KEY")
-        )
     else:
-        # Optimized HuggingFace configuration to prevent Render Out-of-Memory
-        from langchain_huggingface import HuggingFaceEmbeddings
-        return HuggingFaceEmbeddings(
-            model_name="sentence-transformers/all-MiniLM-L6-v2",
-            model_kwargs={'device': 'cpu'}  # CPU mode forces low memory consumption
+        # Zero-memory serverless HuggingFace embeddings for Render Free Tier
+        from langchain_community.embeddings import HuggingFaceInferenceAPIEmbeddings
+        return HuggingFaceInferenceAPIEmbeddings(
+            api_key="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", # Public serverless token for tokenization
+            model_name="sentence-transformers/all-MiniLM-L6-v2"
         )
+        
 
 
 def ingest_document(file_path):
