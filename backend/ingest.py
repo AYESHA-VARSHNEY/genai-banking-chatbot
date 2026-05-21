@@ -19,7 +19,7 @@ def get_embeddings():
         from langchain_google_genai import GoogleGenerativeAIEmbeddings
         # Fixed: Sirf model version string use karo bina 'models/' prefix ke
         return GoogleGenerativeAIEmbeddings(
-            model="text-embedding-004",
+            model="models/text-embedding-004",
             google_api_key=os.getenv("GEMINI_API_KEY")
         )
     else:
