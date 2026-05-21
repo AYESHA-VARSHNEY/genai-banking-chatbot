@@ -19,7 +19,7 @@ def get_embeddings():
     elif EMBEDDING_PROVIDER == "gemini":
         from langchain_google_genai import GoogleGenerativeAIEmbeddings
         return GoogleGenerativeAIEmbeddings(
-            model="models/text-embedding-004",
+            model="text-embedding-004",
             google_api_key=os.getenv("GEMINI_API_KEY")
         )
     else:
@@ -58,12 +58,6 @@ def get_llm():
             temperature=0.3,
             api_key=os.getenv("ANTHROPIC_API_KEY")
         )
-    elif LLM_PROVIDER == "ollama":
-        from langchain_community.llms import Ollama
-        return Ollama(
-            model=os.getenv("OLLAMA_MODEL", "llama3"),
-            temperature=0.3
-        )
     else:
         raise ValueError(f"Unknown LLM_PROVIDER: {LLM_PROVIDER}")
 
@@ -89,7 +83,7 @@ Your role is to assist customers with queries about:
 Use the provided context to answer questions accurately.
 If the answer is not in the context, say: "I don't have specific information about that,
 but I recommend contacting our support team at 1800-XXX-XXXX."
-Be concise, professional, and friendly. Always respond in the same language the user writes in.
+Be concise, professional, and friendly.
 
 Context from knowledge base:
 {context}
@@ -125,7 +119,6 @@ def get_rag_response(user_message, history):
     )
 
     llm = get_llm()
-
     from langchain.schema import HumanMessage
     response = llm.invoke([HumanMessage(content=prompt)])
 

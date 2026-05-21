@@ -18,7 +18,7 @@ def get_embeddings():
     elif EMBEDDING_PROVIDER == "gemini":
         from langchain_google_genai import GoogleGenerativeAIEmbeddings
         return GoogleGenerativeAIEmbeddings(
-            model="models/text-embedding-004",
+            model="text-embedding-004",
             google_api_key=os.getenv("GEMINI_API_KEY")
         )
     else:
@@ -44,7 +44,6 @@ def ingest_document(file_path):
         raise ValueError(f"Unsupported file type: {ext}")
 
     documents = loader.load()
-
     for doc in documents:
         doc.metadata["source"] = os.path.basename(file_path)
 
@@ -62,7 +61,6 @@ def ingest_document(file_path):
         persist_directory=CHROMA_DIR
     )
     vectorstore.add_documents(chunks)
-
     print(f"Ingested {len(chunks)} chunks from {file_path}")
     return len(chunks)
 
