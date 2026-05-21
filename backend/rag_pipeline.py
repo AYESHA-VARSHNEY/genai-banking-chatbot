@@ -16,10 +16,16 @@ def get_embeddings():
             model="text-embedding-3-small",
             api_key=os.getenv("OPENAI_API_KEY")
         )
+    elif EMBEDDING_PROVIDER == "gemini":
+        from langchain_google_genai import GoogleGenerativeAIEmbeddings
+        return GoogleGenerativeAIEmbeddings(
+            model="text-embedding-004",
+            google_api_key=os.getenv("GEMINI_API_KEY")
+        )
     else:
         from langchain_community.embeddings import HuggingFaceInferenceAPIEmbeddings
         return HuggingFaceInferenceAPIEmbeddings(
-            api_key="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",
+            api_key=os.getenv("HF_TOKEN", "hf_MclgVbyXvBlVbOInXBlVbOInXb"),
             model_name="sentence-transformers/all-MiniLM-L6-v2"
         )
 
