@@ -8,12 +8,10 @@ COLLECTION_NAME = "banking_docs"
 
 
 def get_embeddings():
-    
-    from langchain_google_genai import GoogleGenerativeAIEmbeddings
-    return GoogleGenerativeAIEmbeddings(
-        model="models/gemini-embedding-exp-03-07",
-        google_api_key=os.getenv("GEMINI_API_KEY"),
-        task_type="retrieval_document"
+    from langchain_openai import OpenAIEmbeddings
+    return OpenAIEmbeddings(
+        model="text-embedding-3-small",
+        api_key=os.getenv("OPENAI_API_KEY")
     )
 
 
