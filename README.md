@@ -55,7 +55,7 @@ User Browser (React)
 Here are the visual verifications of the application's core modules, execution flows, and active production cloud deployments.
 
 ### 1. Chatbot Home Screen & Greeting
-*Caption: User-friendly Banking Support Assistant dark-themed greeting interface.*
+*User-friendly Banking Support Assistant dark-themed greeting interface.*
 ![Chatbot Home Screen](backend/screenshots/chatbot_home.png)
 
 ### 2. RAG Document Retrieval Query
