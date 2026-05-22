@@ -8,12 +8,18 @@ COLLECTION_NAME = "banking_docs"
 
 
 def get_embeddings():
-    from langchain_openai import OpenAIEmbeddings
-    return OpenAIEmbeddings(
-        model="text-embedding-3-small",
-        api_key=os.getenv("OPENAI_API_KEY")
-    )
-
+    from chromadb.utils.embedding_functions import DefaultEmbeddingFunction
+    from langchain.embeddings.base import Embeddings
+    
+    class ChromaDefaultEmbeddings(Embeddings):
+        def __init__(self):
+            self.ef = DefaultEmbeddingFunction()
+        def embed_documents(self, texts):
+            return self.ef(texts)
+        def embed_query(self, text):
+            return self.ef([text])[0]
+    
+    return ChromaDefaultEmbeddings()
 
 def ingest_document(file_path):
     from langchain_chroma import Chroma
