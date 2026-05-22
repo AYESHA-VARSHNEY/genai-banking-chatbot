@@ -3,6 +3,13 @@
 An AI-powered banking support chatbot built with RAG (Retrieval-Augmented Generation), FastAPI, ChromaDB, and React. It answers customer queries about loans, credit cards, savings accounts, and general banking topics by retrieving information from uploaded documents.
 
 ---
+## 🌍 Live Deployment Links
+
+* **Frontend URL (UI):** https://genai-banking-chatbot-1.onrender.com
+* **Backend URL (API):** https://genai-banking-chatbot.onrender.com
+* **GitHub Repository:** https://github.com/AYESHA-VARSHNEY/genai-banking-chatbot
+
+---
 
 ## Architecture
 
@@ -43,6 +50,31 @@ User Browser (React)
 
 ---
 
+## 📸 Application Screenshots
+
+* **Chatbot Home Screen:** `backend/screenshots/chatbot_home.png`  
+  *Caption: User-friendly Banking Support Assistant dark-themed greeting interface.*
+
+* **RAG Document Retrieval Query:** `backend/screenshots/personal_loan.png`  
+  *Caption: Chatbot successfully retrieving personal loan details with real-time text file source attribution.*
+
+* **FAQ Matching Response:** `backend/screenshots/cibil_score.png`  
+  *Caption: Smart parsing and response delivery for optimizing CIBIL scores from the knowledge base.*
+
+* **Document Upload Panel:** `backend/screenshots/upload_panel.png`  
+  *Caption: Frontend file manager UI built for runtime document ingestion.*
+
+* **Backend Health Monitoring:** `backend/screenshots/api_health.png`  
+  *Caption: Live JSON response verification from the backend `/health` endpoint.*
+
+* **Interactive Swagger Documentation:** `backend/screenshots/swagger_docs.png`  
+  *Caption: FastAPI auto-generated interactive OpenAPI Swagger UI accessible at `/docs`.*
+
+* **Cloud Deployment Dashboard:** `backend/screenshots/render_dashboard.png`  
+  *Caption: Live verification on Render showing successful production deployments for both Frontend and Backend.*
+
+---
+
 ## Setup & Installation
 
 ### Prerequisites
@@ -51,6 +83,7 @@ User Browser (React)
 - Groq API key — free at [console.groq.com](https://console.groq.com)
 
 ---
+
 
 ### 1. Clone the Repository
 
