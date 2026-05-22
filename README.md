@@ -52,26 +52,35 @@ User Browser (React)
 
 ## 📸 Application Screenshots
 
-* **Chatbot Home Screen:** `backend/screenshots/chatbot_home.png`  
-  *Caption: User-friendly Banking Support Assistant dark-themed greeting interface.*
+Here are the visual verifications of the application's core modules, execution flows, and active production cloud deployments.
 
-* **RAG Document Retrieval Query:** `backend/screenshots/personal_loan.png`  
-  *Caption: Chatbot successfully retrieving personal loan details with real-time text file source attribution.*
+### 1. Chatbot Home Screen & Greeting
+*Caption: User-friendly Banking Support Assistant dark-themed greeting interface.*
+![Chatbot Home Screen](backend/screenshots/chatbot_home.png)
 
-* **FAQ Matching Response:** `backend/screenshots/cibil_score.png`  
-  *Caption: Smart parsing and response delivery for optimizing CIBIL scores from the knowledge base.*
+### 2. RAG Document Retrieval Query
+*Caption: Chatbot successfully retrieving personal loan details with real-time text file source attribution.*
+![RAG Query](backend/screenshots/personal_loan.png)
 
-* **Document Upload Panel:** `backend/screenshots/upload_panel.png`  
-  *Caption: Frontend file manager UI built for runtime document ingestion.*
+### 4. FAQ Matching Response
+*Caption: Smart parsing and response delivery for optimizing CIBIL scores from the knowledge base.*
+![FAQ Response](backend/screenshots/cibil_score.png)
 
-* **Backend Health Monitoring:** `backend/screenshots/api_health.png`  
-  *Caption: Live JSON response verification from the backend `/health` endpoint.*
+### 5. Document Upload Panel
+*Caption: Frontend file manager UI built for runtime document ingestion.*
+![Upload Panel](backend/screenshots/upload_panel.png)
 
-* **Interactive Swagger Documentation:** `backend/screenshots/swagger_docs.png`  
-  *Caption: FastAPI auto-generated interactive OpenAPI Swagger UI accessible at `/docs`.*
+### 6. Backend Health Monitoring
+*Caption: Live JSON response verification from the backend `/health` endpoint.*
+![Backend Health](backend/screenshots/api_health.png)
 
-* **Cloud Deployment Dashboard:** `backend/screenshots/render_dashboard.png`  
-  *Caption: Live verification on Render showing successful production deployments for both Frontend and Backend.*
+### 7. Interactive Swagger Documentation
+*Caption: FastAPI auto-generated interactive OpenAPI Swagger UI accessible at `/docs`.*
+![Swagger Docs](backend/screenshots/swagger_docs.png)
+
+### 8. Cloud Deployment Dashboard
+*Caption: Live verification on Render showing successful production deployments for both Frontend and Backend.*
+![Render Dashboard](backend/screenshots/render_dashboard.png)
 
 ---
 
