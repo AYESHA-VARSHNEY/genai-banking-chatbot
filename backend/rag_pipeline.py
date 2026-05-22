@@ -81,35 +81,54 @@ Customer Question: {question}
 Assistant Answer:"""
 
 
-def get_rag_response(user_message, history):
-    vectorstore = load_vectorstore()
-    retriever = vectorstore.as_retriever(
-        search_type="similarity",
-        search_kwargs={"k": 4}
-    )
-
-    docs = retriever.invoke(user_message)
-    context = "\n\n".join([doc.page_content for doc in docs])
-    sources = list(set([doc.metadata.get("source", "Knowledge Base") for doc in docs]))
-
-    chat_history_str = ""
-    for msg in history[-6:]:
-        role = "Customer" if msg["role"] == "user" else "Assistant"
-        chat_history_str += f"{role}: {msg['content']}\n"
-
-    prompt = SYSTEM_PROMPT.format(
-        context=context if context.strip() else "No specific documents found.",
-        chat_history=chat_history_str if chat_history_str else "No previous conversation.",
-        question=user_message
-    )
-
+def get_rag_response(query, chat_history=[]):
+    from langchain_chroma import Chroma
+    from langchain.chains.combine_documents import create_stuff_documents_chain
+    from langchain.chains import create_retrieval_chain
+    from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
+    
+    vectorstore = Chroma(collection_name=COLLECTION_NAME, embedding_function=get_embeddings(), persist_directory=CHROMA_DIR)
+    
+    # Contextual Memory Fix: Safely format chat history and update query context
+    formatted_history = []
+    last_topic = ""
+    
+    for msg in chat_history:
+        if isinstance(msg, dict):
+            role = msg.get("role", "human")
+            content = msg.get("content", "")
+            if role in ["user", "human"]:
+                formatted_history.append(("human", content))
+                # Identify if user mentioned a specific product earlier
+                for topic in ["personal loan", "home loan", "credit card", "savings", "fixed deposit"]:
+                    if topic in content.lower():
+                        last_topic = topic
+            else:
+                formatted_history.append(("ai", content))
+        else:
+            formatted_history.append(msg)
+            
+    # If the user asks a follow-up like "for it", inject the last discussed topic
+    refined_query = query
+    if any(keyword in query.lower() for keyword in ["for it", "interest rate", "charges", "documents"]) and last_topic:
+        refined_query = f"{query} regarding {last_topic}"
+        print(f"Refined Query for Database: {refined_query}") # Debugging log for Render
+        
+    retriever = vectorstore.as_retriever(search_kwargs={"k": 4})
+    
+    system_prompt = "You are an expert banking assistant. Answer the user's question using ONLY the provided context. If you don't know the answer, say that you don't have this information.\n\nContext:\n{context}"
+    
+    qa_prompt = ChatPromptTemplate.from_messages([
+        ("system", system_prompt),
+        MessagesPlaceholder("chat_history"),
+        ("human", "{input}"),
+    ])
+    
     llm = get_llm()
-    from langchain.schema import HumanMessage
-    response = llm.invoke([HumanMessage(content=prompt)])
-
-    if hasattr(response, "content"):
-        reply = response.content
-    else:
-        reply = str(response)
-
-    return reply, sources
+    question_answer_chain = create_stuff_documents_chain(llm, qa_prompt)
+    rag_chain = create_retrieval_chain(retriever, question_answer_chain)
+    
+    response = rag_chain.invoke({"input": refined_query, "chat_history": formatted_history})
+    sources = list(set([doc.metadata.get("source", "Unknown") for doc in response.get("context", [])]))
+    
+    return response["answer"], sources
