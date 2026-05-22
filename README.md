@@ -59,27 +59,27 @@ Here are the visual verifications of the application's core modules, execution f
 ![Chatbot Home Screen](backend/screenshots/chatbot_home.png)
 
 ### 2. RAG Document Retrieval Query
-*Caption: Chatbot successfully retrieving personal loan details with real-time text file source attribution.*
+*Chatbot successfully retrieving personal loan details with real-time text file source attribution.*
 ![RAG Query](backend/screenshots/personal_loan.png)
 
 ### 4. FAQ Matching Response
-*Caption: Smart parsing and response delivery for optimizing CIBIL scores from the knowledge base.*
+*Smart parsing and response delivery for optimizing CIBIL scores from the knowledge base.*
 ![FAQ Response](backend/screenshots/cibil_score.png)
 
 ### 5. Document Upload Panel
-*Caption: Frontend file manager UI built for runtime document ingestion.*
+*Frontend file manager UI built for runtime document ingestion.*
 ![Upload Panel](backend/screenshots/upload_panel.png)
 
 ### 6. Backend Health Monitoring
-*Caption: Live JSON response verification from the backend `/health` endpoint.*
+*Live JSON response verification from the backend `/health` endpoint.*
 ![Backend Health](backend/screenshots/api_health.png)
 
 ### 7. Interactive Swagger Documentation
-*Caption: FastAPI auto-generated interactive OpenAPI Swagger UI accessible at `/docs`.*
+*FastAPI auto-generated interactive OpenAPI Swagger UI accessible at `/docs`.*
 ![Swagger Docs](backend/screenshots/swagger_docs.png)
 
 ### 8. Cloud Deployment Dashboard
-*Caption: Live verification on Render showing successful production deployments for both Frontend and Backend.*
+*Live verification on Render showing successful production deployments for both Frontend and Backend.*
 ![Render Dashboard](backend/screenshots/render_dashboard.png)
 
 ---
