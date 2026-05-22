@@ -11,7 +11,7 @@ def get_embeddings():
     
     from langchain_google_genai import GoogleGenerativeAIEmbeddings
     return GoogleGenerativeAIEmbeddings(
-        model="models/text-embedding-004",
+        model="models/gemini-embedding-exp-03-07",
         google_api_key=os.getenv("GEMINI_API_KEY"),
         task_type="retrieval_document"
     )
