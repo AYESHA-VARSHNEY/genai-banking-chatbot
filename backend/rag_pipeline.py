@@ -4,38 +4,31 @@ from dotenv import load_dotenv
 load_dotenv()
 
 LLM_PROVIDER = os.getenv("LLM_PROVIDER", "groq")
-EMBEDDING_PROVIDER = os.getenv("EMBEDDING_PROVIDER", "gemini")
 CHROMA_DIR = "./chroma_db"
 COLLECTION_NAME = "banking_docs"
 
 
 def get_embeddings():
-    if EMBEDDING_PROVIDER == "openai":
-        from langchain_openai import OpenAIEmbeddings
-        return OpenAIEmbeddings(
-            model="text-embedding-3-small",
-            api_key=os.getenv("OPENAI_API_KEY")
-        )
-    elif EMBEDDING_PROVIDER == "gemini":
-        from langchain_google_genai import GoogleGenerativeAIEmbeddings
-        return GoogleGenerativeAIEmbeddings(
-            model="models/text-embedding-004",
-            google_api_key=os.getenv("GEMINI_API_KEY")
-        )
-    else:
-        from langchain_community.embeddings import HuggingFaceEmbeddings
-        return HuggingFaceEmbeddings(
-            model_name="sentence-transformers/all-MiniLM-L6-v2"
-        )
+    import google.generativeai as genai
+    from langchain_google_genai import GoogleGenerativeAIEmbeddings
+    
+    api_key = os.getenv("GEMINI_API_KEY")
+    genai.configure(api_key=api_key)
+    
+    return GoogleGenerativeAIEmbeddings(
+        model="models/text-embedding-004",
+        google_api_key=api_key,
+        task_type="retrieval_query"
+    )
 
 
 def get_llm():
-    if LLM_PROVIDER == "openai":
-        from langchain_openai import ChatOpenAI
-        return ChatOpenAI(
-            model="gpt-3.5-turbo",
+    if LLM_PROVIDER == "groq":
+        from langchain_groq import ChatGroq
+        return ChatGroq(
+            model="llama-3.3-70b-versatile",
             temperature=0.3,
-            api_key=os.getenv("OPENAI_API_KEY")
+            api_key=os.getenv("GROQ_API_KEY")
         )
     elif LLM_PROVIDER == "gemini":
         from langchain_google_genai import ChatGoogleGenerativeAI
@@ -44,19 +37,12 @@ def get_llm():
             temperature=0.3,
             google_api_key=os.getenv("GEMINI_API_KEY")
         )
-    elif LLM_PROVIDER == "groq":
-        from langchain_groq import ChatGroq
-        return ChatGroq(
-            model="llama-3.3-70b-versatile",
+    elif LLM_PROVIDER == "openai":
+        from langchain_openai import ChatOpenAI
+        return ChatOpenAI(
+            model="gpt-3.5-turbo",
             temperature=0.3,
-            api_key=os.getenv("GROQ_API_KEY")
-        )
-    elif LLM_PROVIDER == "anthropic":
-        from langchain_anthropic import ChatAnthropic
-        return ChatAnthropic(
-            model="claude-3-haiku-20240307",
-            temperature=0.3,
-            api_key=os.getenv("ANTHROPIC_API_KEY")
+            api_key=os.getenv("OPENAI_API_KEY")
         )
     else:
         raise ValueError(f"Unknown LLM_PROVIDER: {LLM_PROVIDER}")

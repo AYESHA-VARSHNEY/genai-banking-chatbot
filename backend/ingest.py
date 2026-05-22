@@ -3,30 +3,22 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-EMBEDDING_PROVIDER = os.getenv("EMBEDDING_PROVIDER", "gemini")
 CHROMA_DIR = "./chroma_db"
 COLLECTION_NAME = "banking_docs"
 
 
 def get_embeddings():
-    if EMBEDDING_PROVIDER == "openai":
-        from langchain_openai import OpenAIEmbeddings
-        return OpenAIEmbeddings(
-            model="text-embedding-3-small",
-            api_key=os.getenv("OPENAI_API_KEY")
-        )
-    elif EMBEDDING_PROVIDER == "gemini":
-        from langchain_google_genai import GoogleGenerativeAIEmbeddings
-        # Fixed: Sirf model version string use karo bina 'models/' prefix ke
-        return GoogleGenerativeAIEmbeddings(
-            model="models/text-embedding-004",
-            google_api_key=os.getenv("GEMINI_API_KEY")
-        )
-    else:
-        from langchain_community.embeddings import HuggingFaceEmbeddings
-        return HuggingFaceEmbeddings(
-            model_name="sentence-transformers/all-MiniLM-L6-v2"
-        )
+    import google.generativeai as genai
+    from langchain_google_genai import GoogleGenerativeAIEmbeddings
+    
+    api_key = os.getenv("GEMINI_API_KEY")
+    genai.configure(api_key=api_key)
+    
+    return GoogleGenerativeAIEmbeddings(
+        model="models/text-embedding-004",
+        google_api_key=api_key,
+        task_type="retrieval_document"
+    )
 
 
 def ingest_document(file_path):
@@ -78,7 +70,6 @@ def ingest_all_from_folder(folder="./data"):
 
 
 if __name__ == "__main__":
-    # Path ko dynamically handle karne ke liye backend/data set karo
     base_dir = os.path.dirname(os.path.abspath(__file__))
     data_folder = os.path.join(base_dir, "data")
     ingest_all_from_folder(data_folder)
