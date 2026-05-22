@@ -54,31 +54,31 @@ User Browser (React)
 
 Here are the visual verifications of the application's core modules, execution flows, and active production cloud deployments.
 
-### 1. Chatbot Home Screen & Greeting
+### Chatbot Home Screen & Greeting
 *User-friendly Banking Support Assistant dark-themed greeting interface.*
 ![Chatbot Home Screen](backend/screenshots/chatbot_home.png)
 
-### 2. RAG Document Retrieval Query
+### RAG Document Retrieval Query
 *Chatbot successfully retrieving personal loan details with real-time text file source attribution.*
 ![RAG Query](backend/screenshots/personal_loan.png)
 
-### 4. FAQ Matching Response
+### FAQ Matching Response
 *Smart parsing and response delivery for optimizing CIBIL scores from the knowledge base.*
 ![FAQ Response](backend/screenshots/cibil_score.png)
 
-### 5. Document Upload Panel
+### Document Upload Panel
 *Frontend file manager UI built for runtime document ingestion.*
 ![Upload Panel](backend/screenshots/upload_panel.png)
 
-### 6. Backend Health Monitoring
+### Backend Health Monitoring
 *Live JSON response verification from the backend `/health` endpoint.*
 ![Backend Health](backend/screenshots/api_health.png)
 
-### 7. Interactive Swagger Documentation
+### Interactive Swagger Documentation
 *FastAPI auto-generated interactive OpenAPI Swagger UI accessible at `/docs`.*
 ![Swagger Docs](backend/screenshots/swagger_docs.png)
 
-### 8. Cloud Deployment Dashboard
+### Cloud Deployment Dashboard
 *Live verification on Render showing successful production deployments for both Frontend and Backend.*
 ![Render Dashboard](backend/screenshots/render_dashboard.png)
 
